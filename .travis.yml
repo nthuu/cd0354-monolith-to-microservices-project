@@ -15,9 +15,9 @@ script:
   - docker tag udagram-frontend nthuu1001/udagram-frontend:v1
   - docker tag reverseproxy nthuu1001/reverseproxy:v1
 
-after success:
-    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-    - docker push nthuu1001/udagram-api-feed:v1
-    - docker push nthuu1001/udagram-api-user:v1
-    - docker push nthuu1001/udagram-frontend:v1
-    - docker push nthuu1001/reverseproxy:v1
+## Push
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push nthuu1001/udagram-api-feed:v1
+  - docker push nthuu1001/udagram-api-user:v1
+  - docker push nthuu1001/udagram-frontend:v1
+  - docker push nthuu1001/reverseproxy:v1
